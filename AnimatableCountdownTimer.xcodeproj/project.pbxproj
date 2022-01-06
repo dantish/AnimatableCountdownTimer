@@ -11,6 +11,7 @@
 		DBDDF2BA2786FB9D004D0EBD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDDF2B92786FB9D004D0EBD /* ContentView.swift */; };
 		DBDDF2BC2786FBA0004D0EBD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBDDF2BB2786FBA0004D0EBD /* Assets.xcassets */; };
 		DBDDF2BF2786FBA0004D0EBD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBDDF2BE2786FBA0004D0EBD /* Preview Assets.xcassets */; };
+		DBDDF2C62786FD80004D0EBD /* CountdownTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDDF2C52786FD80004D0EBD /* CountdownTimer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		DBDDF2B92786FB9D004D0EBD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DBDDF2BB2786FBA0004D0EBD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DBDDF2BE2786FBA0004D0EBD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		DBDDF2C52786FD80004D0EBD /* CountdownTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				DBDDF2B72786FB9D004D0EBD /* AnimatableCountdownTimerApp.swift */,
 				DBDDF2B92786FB9D004D0EBD /* ContentView.swift */,
+				DBDDF2C52786FD80004D0EBD /* CountdownTimer.swift */,
 				DBDDF2BB2786FBA0004D0EBD /* Assets.xcassets */,
 				DBDDF2BD2786FBA0004D0EBD /* Preview Content */,
 			);
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DBDDF2BA2786FB9D004D0EBD /* ContentView.swift in Sources */,
+				DBDDF2C62786FD80004D0EBD /* CountdownTimer.swift in Sources */,
 				DBDDF2B82786FB9D004D0EBD /* AnimatableCountdownTimerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
