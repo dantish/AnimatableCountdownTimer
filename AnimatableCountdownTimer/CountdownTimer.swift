@@ -13,7 +13,7 @@ struct CountdownTimer: View {
 
     var body: some View {
         Text(String(timeRemaining))
-            .font(.largeTitle)
+            .font(.largeTitle.monospacedDigit())
             .foregroundColor(.white)
             .padding(.vertical, 4)
             .padding(.horizontal)
