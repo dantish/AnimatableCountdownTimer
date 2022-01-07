@@ -24,16 +24,22 @@ private extension View {
 
 private struct AnimatableText: View {
     let text: String
+    private let characters: [String]
 
     init(_ text: String) {
         self.text = text
+        self.characters = text.map(String.init)
     }
 
     var body: some View {
-        Text(text)
-            .font(.largeTitle.monospacedDigit())
-            .transition(.asymmetric(insertion: .move(edge: .bottom), removal: .move(edge: .top)))
-            .id("\(Self.self)-\(text)")
+        HStack(spacing: 0) {
+            ForEach(characters, id: \.self) { character in
+                Text(character)
+                    .font(.largeTitle.monospacedDigit())
+                    .transition(.asymmetric(insertion: .move(edge: .bottom), removal: .move(edge: .top)))
+                    .id("\(Self.self)-\(character)")
+            }
+        }
     }
 }
 
