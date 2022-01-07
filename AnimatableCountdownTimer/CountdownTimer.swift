@@ -17,7 +17,6 @@ struct CountdownTimer: View {
             .foregroundColor(.white)
             .padding(.vertical, 4)
             .padding(.horizontal)
-            .frame(width: 100)
             .background(
                 Capsule()
                     .fill(Color.red)
