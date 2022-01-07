@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var timeRemaining: Int = 100
+
     var body: some View {
-        CountdownTimer()
+        CountdownTimer(timeRemaining: $timeRemaining)
     }
 }
 

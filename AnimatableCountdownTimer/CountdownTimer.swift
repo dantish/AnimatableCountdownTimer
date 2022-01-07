@@ -23,8 +23,9 @@ private extension View {
 }
 
 struct CountdownTimer: View {
+    @Binding var timeRemaining: Int
+
     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    @State private var timeRemaining = 100
 
     var body: some View {
         Text(String(timeRemaining))
@@ -42,7 +43,7 @@ struct CountdownTimer: View {
 
 struct CountdownTimer_Previews: PreviewProvider {
     static var previews: some View {
-        CountdownTimer()
+        CountdownTimer(timeRemaining: .constant(100))
             .previewLayout(.sizeThatFits)
     }
 }
