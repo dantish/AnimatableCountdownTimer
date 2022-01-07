@@ -7,13 +7,9 @@
 
 import SwiftUI
 
-struct CountdownTimer: View {
-    private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    @State private var timeRemaining = 100
-
-    var body: some View {
-        Text(String(timeRemaining))
-            .font(.largeTitle.monospacedDigit())
+private extension View {
+    func capsuled() -> some View {
+        self
             .foregroundColor(.white)
             .padding(.vertical, 4)
             .padding(.horizontal)
@@ -23,6 +19,17 @@ struct CountdownTimer: View {
                     .opacity(0.75)
             )
             .clipped()
+    }
+}
+
+struct CountdownTimer: View {
+    private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @State private var timeRemaining = 100
+
+    var body: some View {
+        Text(String(timeRemaining))
+            .font(.largeTitle.monospacedDigit())
+            .capsuled()
             .onReceive(timer) { _ in
                 if timeRemaining > 0 {
                     timeRemaining -= 1
