@@ -22,16 +22,28 @@ private extension View {
     }
 }
 
+private struct AnimatableText: View {
+    let text: String
+
+    init(_ text: String) {
+        self.text = text
+    }
+
+    var body: some View {
+        Text(text)
+            .font(.largeTitle.monospacedDigit())
+            .transition(.asymmetric(insertion: .move(edge: .bottom), removal: .move(edge: .top)))
+            .id("\(Self.self)-\(text)")
+    }
+}
+
 struct CountdownTimer: View {
     @Binding var timeRemaining: Int
 
     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
     var body: some View {
-        Text(String(timeRemaining))
-            .font(.largeTitle.monospacedDigit())
-            .transition(.asymmetric(insertion: .move(edge: .bottom), removal: .move(edge: .top)))
-            .id("\(Self.self)-\(timeRemaining)")
+        AnimatableText(String(timeRemaining))
             .capsuled()
             .onReceive(timer) { _ in
                 if timeRemaining > 0 {
