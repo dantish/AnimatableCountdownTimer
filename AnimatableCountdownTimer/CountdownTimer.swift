@@ -30,6 +30,8 @@ struct CountdownTimer: View {
     var body: some View {
         Text(String(timeRemaining))
             .font(.largeTitle.monospacedDigit())
+            .transition(.asymmetric(insertion: .move(edge: .bottom), removal: .move(edge: .top)))
+            .id("\(Self.self)-\(timeRemaining)")
             .capsuled()
             .onReceive(timer) { _ in
                 if timeRemaining > 0 {
