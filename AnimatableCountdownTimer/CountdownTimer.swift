@@ -13,6 +13,16 @@ struct CountdownTimer: View {
 
     var body: some View {
         Text(String(timeRemaining))
+            .font(.largeTitle)
+            .foregroundColor(.white)
+            .padding(.vertical, 4)
+            .padding(.horizontal)
+            .background(
+                Capsule()
+                    .fill(Color.red)
+                    .opacity(0.75)
+            )
+            .clipped()
             .onReceive(timer) { _ in
                 if timeRemaining > 0 {
                     timeRemaining -= 1
