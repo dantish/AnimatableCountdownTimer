@@ -92,9 +92,37 @@ struct CountdownTimer: View {
     }
 }
 
+struct CurrentTime: View {
+    @StateObject
+    private var viewModel = TimerViewModel()
+
+    @State private var currentDate = Date()
+
+    private var formattedCurrentTime: String {
+        currentDate.formatted(date: .omitted, time: .standard)
+    }
+
+    var body: some View {
+        AnimatableText(formattedCurrentTime)
+            .capsuled()
+            .onReceive(viewModel.timer) { date in
+                withAnimation {
+                    currentDate = date
+                }
+            }
+    }
+}
+
 struct CountdownTimer_Previews: PreviewProvider {
     static var previews: some View {
         CountdownTimer(timeRemaining: .constant(100))
+            .previewLayout(.sizeThatFits)
+    }
+}
+
+struct CurrentTime_Previews: PreviewProvider {
+    static var previews: some View {
+        CurrentTime()
             .previewLayout(.sizeThatFits)
     }
 }

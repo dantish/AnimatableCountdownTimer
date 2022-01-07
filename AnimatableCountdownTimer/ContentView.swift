@@ -11,7 +11,10 @@ struct ContentView: View {
     @State private var timeRemaining: Int = 100
 
     var body: some View {
-        CountdownTimer(timeRemaining: $timeRemaining.animation())
+        VStack {
+            CountdownTimer(timeRemaining: $timeRemaining.animation())
+            CurrentTime()
+        }
     }
 }
 
