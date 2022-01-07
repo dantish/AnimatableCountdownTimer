@@ -23,21 +23,33 @@ private extension View {
 }
 
 private struct AnimatableText: View {
+    private struct IndexedCharacter: Identifiable {
+        let index: Int
+        let char: Character
+
+        var id: String {
+            "\(index)-\(char)"
+        }
+    }
+
     let text: String
-    private let characters: [String]
+    private let indexedCharacters: [IndexedCharacter]
 
     init(_ text: String) {
         self.text = text
-        self.characters = text.map(String.init)
+        self.indexedCharacters = text
+            .map(Character.init)
+            .enumerated()
+            .map(IndexedCharacter.init)
     }
 
     var body: some View {
         HStack(spacing: 0) {
-            ForEach(characters, id: \.self) { character in
-                Text(character)
+            ForEach(indexedCharacters) { item in
+                Text(String(item.char))
                     .font(.largeTitle.monospacedDigit())
                     .transition(.asymmetric(insertion: .move(edge: .bottom), removal: .move(edge: .top)))
-                    .id("\(Self.self)-\(character)")
+                    .id("\(Self.self)-\(item.id)")
             }
         }
     }
