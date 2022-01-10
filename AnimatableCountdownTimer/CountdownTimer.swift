@@ -5,6 +5,7 @@
 //  Created by Daniel Tischenko on 06.01.2022.
 //
 
+import Combine
 import SwiftUI
 
 private extension View {
@@ -55,19 +56,37 @@ private struct AnimatableText: View {
     }
 }
 
+private class TimerViewModel: ObservableObject {
+    let timer: AnyPublisher<Date, Never>
+    private var cancellable: Cancellable?
+
+    init() {
+        let timer = Timer.publish(every: 1, on: .main, in: .common)
+        self.cancellable = timer.connect()
+        self.timer = timer.eraseToAnyPublisher()
+    }
+
+    func stopTimer() {
+        cancellable?.cancel()
+        cancellable = nil
+    }
+
+}
+
 struct CountdownTimer: View {
     @Binding var timeRemaining: Int
 
-    private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @StateObject
+    private var viewModel = TimerViewModel()
 
     var body: some View {
         AnimatableText(String(timeRemaining))
             .capsuled()
-            .onReceive(timer) { _ in
+            .onReceive(viewModel.timer) { _ in
                 if timeRemaining > 0 {
                     timeRemaining -= 1
                 } else {
-                    timer.upstream.connect().cancel()
+                    viewModel.stopTimer()
                 }
             }
     }
