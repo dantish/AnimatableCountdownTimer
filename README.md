@@ -1,6 +1,8 @@
 # AnimatableCountdownTimer
 This repository contains examples of the animatable countdown timer and current time written in SwiftUI.
 
+![Preview](preview.gif)
+
 ### License
 MIT License
 
